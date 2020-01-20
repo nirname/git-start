@@ -1,0 +1,57 @@
+h1 {
+  color: #f64d27 !important;
+}
+h2, h3, strong, b {
+  /*color: #2a76dd !important;*/
+  color: #3182bd !important;
+}
+
+body, .deck-container {
+  background-color: #eae9e1 !important;
+}
+
+img {
+  border: none !important;
+}
+
+.fragment.fade-up:not(.visible) {
+  display: none !important;
+}
+
+.fragment.fade-out.visible {
+  display: none !important;
+}
+
+/*
+.bad-rule:before {
+  content: "\2716  ";
+}
+
+.bad-rule {
+  color: #d7191c;
+}
+
+.ok-rule:before {
+  content: "\2714  ";
+}
+
+.ok-rule {
+  color: #1a9641;
+}
+*/
+
+.reveal .slides section .fragment.highlight-green.visible {
+  color: #1a9641 !important;
+}
+
+.reveal .slides section .fragment.highlight-green.visible:before {
+  content: "\2714  " !important;
+}
+
+.reveal .slides section .fragment.highlight-red.visible {
+  color: #d7191c !important;
+}
+
+.reveal .slides section .fragment.highlight-red.visible:before {
+  content: "\2716  " !important;
+}
