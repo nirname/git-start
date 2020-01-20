@@ -82,6 +82,7 @@ seqdiag {
 
   dir <- repo [label="checkout", fontsize=14]
   dir -> index [label="add", fontsize=14]
+  dir <- index [label="reset", fontsize=14]
   index -> repo [label="commit", fontsize=14]
 
 }
@@ -89,10 +90,12 @@ seqdiag {
 </section>
 
 <section>
+
 ## Doing chagnes
 
 ```shell
 git add .
+git reset -- dont-commit.txt
 git commit -m 'Here goes message'
 ```
 </section>
@@ -170,7 +173,7 @@ digraph {
 
   {
     node [shape="rect" color="#4dac26" fillcolor="#4dac26"]
-    HEAD
+    head
   }
 
   {
@@ -180,7 +183,7 @@ digraph {
 
  {
     rank = same
-    C -> master -> HEAD [dir="back"]
+    C -> master -> head [dir="back"]
   }
 }
 ```

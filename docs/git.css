@@ -1,3 +1,7 @@
+svg {
+  max-height: 500px;
+}
+
 h1 {
   color: #f64d27 !important;
 }
