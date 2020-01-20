@@ -12,6 +12,20 @@ git config --global user.email ivanov@example.com
 </section>
 
 <section>
+
+.gitconfig
+```ini
+[alias]
+  l = log --pretty=format:\"%C(yellow)%h%C(reset) | %s %C(red)[%aN]%C(green)%d%C(reset)\" --decorate --graph --all
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  mr = merge
+```
+</section>
+
+<section>
 Внешние утилиты
 
 ```bash
@@ -71,6 +85,44 @@ seqdiag {
   index -> repo [label="commit", fontsize=14]
 
 }
+```
+</section>
+
+<section>
+## Doing chagnes
+
+```shell
+git add .
+git commit -m 'Here goes message'
+```
+</section>
+
+<section>
+```seqdiag
+seqdiag {
+  activation = none
+  dir [label="Working\ndirectory", color="#F1A340", fontsize=14]
+  index [label="Index", fontsize=14]
+  repo [label="Repository", color="#998DC3", fontsize=14]
+
+  repo -> repo [label="reset --soft", fontsize=14]
+  index <- repo [label="reset [--mixed]", fontsize=14]
+  dir <- index [label="reset --hard", fontsize=14]
+}
+```
+</section>
+
+<section>
+## Undoing changes
+
+**Unstage changes**
+```shell
+git reset --soft
+```
+
+**Save staged changes**
+```shell
+git reset
 ```
 </section>
 
