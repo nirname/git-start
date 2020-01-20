@@ -44,14 +44,16 @@ External **editor**
 <section>
 Инициализировать новый проект c **Git**
 
-```shell
+```bash
 git init new-project
 ```
 
-Добавить существуй проект в **Git**
+Добавить существующий проект в **Git**
 
-```shell
+```bash
 cd existing-project
 git init .
 ```
 </section>
+
+<script src="highlight.min.js"></script>
