@@ -50,6 +50,7 @@ code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
 code > span. { color: #1f1c1b; } /* Normal */
   </style>
   <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="highlight.css"/>
   <link rel="stylesheet" href="git.css"/>
   <link rel="stylesheet" href="white.css"/>
   <!-- Printing and PDF exports -->
@@ -76,8 +77,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <h1>Configuring</h1>
 <section>
 <p>Первоначальная настройка <strong>Git</strong></p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> config --global user.name <span class="st">&quot;Nikolay Rozhkov&quot;</span>
-<span class="fu">git</span> config --global user.email rozhkov@uchi.ru</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> config --global user.name <span class="st">&quot;Inanov Ivan&quot;</span>
+<span class="fu">git</span> config --global user.email ivanov@example.com</code></pre></div>
 </section>
 <section>
 <p>Внешние утилиты</p>
@@ -98,13 +99,145 @@ code > span. { color: #1f1c1b; } /* Normal */
 </section>
 </section>
 <section id="init" class="slide level1">
-<h1>INIT</h1>
+<h1>Init</h1>
 <section>
 <p>Инициализировать новый проект c <strong>Git</strong></p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> init new-project</code></pre></div>
 <p>Добавить существующий проект в <strong>Git</strong></p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> existing-project
 <span class="fu">git</span> init .</code></pre></div>
+</section>
+</section>
+<section id="staging" class="slide level1">
+<h1>Staging</h1>
+<section>
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg viewBox="0 0 640 348" xmlns="http://www.w3.org/2000/svg" xmlns:inkspace="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs id="defs_block">
+    <filter height="1.504" id="filter_blur" inkspace:collect="always" width="1.1575" x="-0.07875" y="-0.252">
+      <feGaussianBlur id="feGaussianBlur3780" inkspace:collect="always" stdDeviation="4.2" />
+    </filter>
+  </defs>
+  <title>blockdiag</title>
+  <desc>seqdiag {
+  activation = none
+  dir [label="Working\ndirectory", color="#F1A340", fontsize=14]
+  index [label="Index", fontsize=14]
+  repo [label="Repository", color="#998DC3", fontsize=14]
+
+  dir &lt;- repo [label="checkout", fontsize=14]
+  dir -&gt; index [label="add", fontsize=14]
+  index -&gt; repo [label="commit", fontsize=14]
+
+}</desc>
+  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="67" y="46" />
+  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="259" y="46" />
+  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="451" y="46" />
+  <path d="M 128 80 L 128 336" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="8 4" />
+  <path d="M 320 80 L 320 336" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="8 4" />
+  <path d="M 512 80 L 512 336" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="8 4" />
+  <rect fill="rgb(241,163,64)" height="40" stroke="rgb(0,0,0)" width="128" x="64" y="40" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="53" x="128" y="59">Working</text>
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="68" x="128" y="75">directory</text>
+  <rect fill="rgb(255,255,255)" height="40" stroke="rgb(0,0,0)" width="128" x="256" y="40" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="38" x="320" y="67">Index</text>
+  <rect fill="rgb(153,141,195)" height="40" stroke="rgb(0,0,0)" width="128" x="448" y="40" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="76" x="512" y="67">Repository</text>
+  <path d="M 136 138 L 504 138" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="144,134 136,138 144,142" stroke="rgb(0,0,0)" />
+  <path d="M 136 206 L 312 206" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="304,202 312,206 304,210" stroke="rgb(0,0,0)" />
+  <path d="M 328 274 L 504 274" fill="none" stroke="rgb(0,0,0)" />
+  <polygon fill="rgb(0,0,0)" points="496,270 504,274 496,278" stroke="rgb(0,0,0)" />
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="61" x="473" y="136">checkout</text>
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="22" x="151" y="204">add</text>
+  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="45" x="354" y="272">commit</text>
+</svg>
+
+</section>
+</section>
+<section id="branches" class="slide level1">
+<h1>Branches</h1>
+<section>
+<p>Создание ветки</p>
+<pre class="shell"><code>git branch feature</code></pre>
+<p>Переключение</p>
+<pre class="shell"><code>git checkout feature</code></pre>
+<p>Сокращённо</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> checkout -b feature</code></pre></div>
+</section>
+<section>
+<p>Список веток</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="fu">git</span> branch --all
+<span class="ex">*</span> master</code></pre></div>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="260pt" height="162pt"
+ viewBox="0.00 0.00 259.51 161.63" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 157.6274)">
+<title>%3</title>
+<!-- A -->
+<g id="node1" class="node">
+<title>A</title>
+<ellipse fill="#e66101" stroke="#e66101" cx="22.6274" cy="-131" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="22.6274" y="-126" font-family="Times,serif" font-size="20.00" fill="#ffffff">A</text>
+</g>
+<!-- B -->
+<g id="node2" class="node">
+<title>B</title>
+<ellipse fill="#e66101" stroke="#e66101" cx="103.8823" cy="-131" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="103.8823" y="-126" font-family="Times,serif" font-size="20.00" fill="#ffffff">B</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="#000000" d="M45.2614,-131C53.2069,-131 62.303,-131 70.9215,-131"/>
+<polygon fill="#000000" stroke="#000000" points="71.0879,-134.5001 81.0878,-131 71.0878,-127.5001 71.0879,-134.5001"/>
+</g>
+<!-- C -->
+<g id="node3" class="node">
+<title>C</title>
+<ellipse fill="#e66101" stroke="#e66101" cx="207.0097" cy="-131" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="207.0097" y="-126" font-family="Times,serif" font-size="20.00" fill="#ffffff">C</text>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="edge2" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="#000000" d="M126.514,-131C140.3882,-131 158.3943,-131 173.8574,-131"/>
+<polygon fill="#000000" stroke="#000000" points="174.0744,-134.5001 184.0743,-131 174.0743,-127.5001 174.0744,-134.5001"/>
+</g>
+<!-- master -->
+<g id="node5" class="node">
+<title>master</title>
+<polygon fill="#0571b0" stroke="#0571b0" points="251.5097,-90 162.5097,-90 162.5097,-54 251.5097,-54 251.5097,-90"/>
+<text text-anchor="middle" x="207.0097" y="-67" font-family="Times,serif" font-size="20.00" fill="#ffffff">master</text>
+</g>
+<!-- C&#45;&gt;master -->
+<g id="edge3" class="edge">
+<title>C&#45;&gt;master</title>
+<path fill="none" stroke="#000000" d="M207.0097,-97.9241C207.0097,-95.4286 207.0097,-92.933 207.0097,-90.4375"/>
+<polygon fill="#000000" stroke="#000000" points="203.5098,-98.1836 207.0097,-108.1836 210.5098,-98.1836 203.5098,-98.1836"/>
+</g>
+<!-- HEAD -->
+<g id="node4" class="node">
+<title>HEAD</title>
+<polygon fill="#4dac26" stroke="#4dac26" points="247.5097,-36 166.5097,-36 166.5097,0 247.5097,0 247.5097,-36"/>
+<text text-anchor="middle" x="207.0097" y="-13" font-family="Times,serif" font-size="20.00" fill="#ffffff">HEAD</text>
+</g>
+<!-- master&#45;&gt;HEAD -->
+<g id="edge4" class="edge">
+<title>master&#45;&gt;HEAD</title>
+<path fill="none" stroke="#000000" d="M207.0097,-43.5865C207.0097,-41.1046 207.0097,-38.6226 207.0097,-36.1406"/>
+<polygon fill="#000000" stroke="#000000" points="203.5098,-43.7901 207.0097,-53.7902 210.5098,-43.7902 203.5098,-43.7901"/>
+</g>
+</g>
+</svg>
+
 </section>
 <script src="highlight.min.js"></script>
 </section>
