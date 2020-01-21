@@ -508,25 +508,9 @@ digraph {
 ```
 </section>
 
+# Revisions
 
 <section>
-```seqdiag
-seqdiag {
-  activation = none
-  dir [label="Working\ndirectory", color="#F1A340", fontsize=14]
-  index [label="Index", fontsize=14]
-  repo [label="Repository", color="#998DC3", fontsize=14]
-
-  repo -> repo [label="reset --soft", fontsize=14]
-  index <- repo [label="reset [--mixed]", fontsize=14]
-  dir <- index [label="reset --hard", fontsize=14]
-}
-```
-</section>
-
-<section>
-Revisions
-
 **master**
 
 <p class="fragment">
@@ -540,19 +524,63 @@ Revisions
 </section>
 
 <section>
-Revisions
+head**^**
 
 <p class="fragment">
-HEAD**^**
+head**~**
 </p>
 
 <p class="fragment">
-HEAD**~**
+head**@{1 day ago}**
+</p>
+</section>
+
+<section>
+`head^n` **n-й родитель**
+
+<p class="fragment">
+`head~n` **n 1-x родителей**
 </p>
 
 <p class="fragment">
-HEAD**@{**0**}**
+`head^1^1 == head~2`
 </p>
+</section>
+
+<section>
+`head^ == head^1`
+
+`head~ == head~1`
+
+`head == head^0 == head~0`
+</section>
+
+<section>
+```dot
+digraph revisions {
+  bgcolor="transparent"
+  node [shape="circle" fillcolor="#92B6E6" style=filled]
+  { G, H } -> D
+  { I, J } -> F
+  { D, E, F } -> B
+  F -> C
+  { B, C } -> A
+
+  A, B, C, I, J[fontcolor="white"]
+
+  A[fillcolor="#40004b"]
+  B[fillcolor="#762a83"]
+  C[fillcolor="#9970ab"]
+  D[fillcolor="#c2a5cf"]
+  E[fillcolor="#e7d4e8"]
+  F[fillcolor="#d9f0d3"]
+  G[fillcolor="#a6dba0"]
+  H[fillcolor="#5aae61"]
+  I[fillcolor="#1b7837"]
+  J[fillcolor="#00441b"]
+
+}
+```
 </section>
 
 # Remotes
@@ -578,22 +606,107 @@ cat .git/config</code></pre>
 
 </section>
 
-
 <section>
+```bash
+git clone project local
+```
+
 ```dot
 digraph {
-  graph[bgcolor="transparent" rankdir=LR]
+  graph[bgcolor="transparent" rankdir=LR fontname="Arial"]
   node [style="filled" fontcolor="white" fontsize=20]
+
+  {
+    node[shape="rect" fillcolor="#0571b0"]
+    origin_master[label="origin/master"]
+    master[label="master"]
+  }
 
   {
     node[shape="circle" fillcolor="#e66101"]
     A -> B
   }
 
+
+  {
+    rank="same"
+    origin_master -> B
+  }
+
+  {
+    rank="same"
+    B -> master [dir="back"]
+  }
+}
+```
+</section>
+
+<section>
+```bash
+cd project; touch D; git add .; git commit -m 'D'
+```
+
+```dot
+digraph {
+  graph[bgcolor="transparent" rankdir=LR fontname="Arial"]
+  node [style="filled" fontcolor="white" fontsize=20]
+
   {
     node[shape="rect" fillcolor="#0571b0"]
+    origin_master[label="origin/master"]
+    master[label="master"]
+  }
+
+  {
+    node[shape="circle" fillcolor="#e66101"]
+    A -> B -> D
+  }
+
+
+  {
     rank="same"
-    master -> B
+    origin_master -> B
+  }
+
+  {
+    rank="same"
+    D -> master [dir="back"]
+  }
+}
+```
+</section>
+
+<section>
+```bash
+git fetch origin master
+```
+
+```dot
+digraph {
+  graph[bgcolor="transparent" rankdir=LR]
+  node [style="filled" fontcolor="white" fontsize=20]
+
+  {
+    node[shape="rect" fillcolor="#0571b0"]
+    origin_master[label="origin/master"]
+    master[label="master"]
+  }
+
+  {
+    node[shape="circle" fillcolor="#e66101"]
+    A -> B -> C
+    B -> D
+  }
+
+
+  {
+    rank="same"
+    origin_master -> C
+  }
+
+  {
+    rank="same"
+    D -> master [dir="back"]
   }
 }
 ```
@@ -602,17 +715,67 @@ digraph {
 
 <section>
 
-
-## Undoing changes
-
-**Unstage changes**
-```shell
-git reset --soft
+```bash
+git fetch && git merge origin/master
+git pull origin master
+git pull --rebase
 ```
 
-**Save staged changes**
-```shell
-git reset
-```
+```dot
+digraph {
+  graph[bgcolor="transparent" rankdir=LR]
+  node [style="filled" fontcolor="white" fontsize=20]
 
+  {
+    node[shape="rect" fillcolor="#0571b0"]
+    origin_master[label="origin/master"]
+    master[label="master"]
+  }
+
+  {
+    node[shape="circle" fillcolor="#e66101"]
+    A -> B -> C
+    B -> D
+    {C D} -> E
+  }
+
+  {
+    rank="same"
+    origin_master -> C
+  }
+
+  {
+    rank="same"
+    E -> master [dir="back"]
+  }
+}
+```
 </section>
+
+
+<section>
+**Notation**
+
+```ini
+local-branch:remote-branch
+```
+
+**Uptrack**
+```shell
+git push -u origin feature
+```
+
+**Delete**
+```shell
+git push origin :feature
+git push origin --delete feature
+```
+</section>
+
+# The End
+
+**Прочитать**
+
+https://git-scm.com/book/en/v2
+
+https://git-scm.com/book/ru/v1

@@ -1046,55 +1046,10 @@ git commit -m &#39;Here goes message&#39;</code></pre>
 </svg>
 
 </section>
-<section>
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" xmlns:inkspace="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs id="defs_block">
-    <filter height="1.504" id="filter_blur" inkspace:collect="always" width="1.1575" x="-0.07875" y="-0.252">
-      <feGaussianBlur id="feGaussianBlur3780" inkspace:collect="always" stdDeviation="4.2" />
-    </filter>
-  </defs>
-  <title>blockdiag</title>
-  <desc>seqdiag {
-  activation = none
-  dir [label="Working\ndirectory", color="#F1A340", fontsize=14]
-  index [label="Index", fontsize=14]
-  repo [label="Repository", color="#998DC3", fontsize=14]
-
-  repo -&gt; repo [label="reset --soft", fontsize=14]
-  index &lt;- repo [label="reset [--mixed]", fontsize=14]
-  dir &lt;- index [label="reset --hard", fontsize=14]
-}</desc>
-  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="67" y="46" />
-  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="259" y="46" />
-  <rect fill="rgb(0,0,0)" height="40" stroke="rgb(0,0,0)" style="filter:url(#filter_blur);opacity:0.7;fill-opacity:1" width="128" x="451" y="46" />
-  <path d="M 128 80 L 128 368" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="8 4" />
-  <path d="M 320 80 L 320 368" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="8 4" />
-  <path d="M 512 80 L 512 368" fill="none" stroke="rgb(0,0,0)" stroke-dasharray="8 4" />
-  <rect fill="rgb(241,163,64)" height="40" stroke="rgb(0,0,0)" width="128" x="64" y="40" />
-  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="53" x="128" y="59">Working</text>
-  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="68" x="128" y="75">directory</text>
-  <rect fill="rgb(255,255,255)" height="40" stroke="rgb(0,0,0)" width="128" x="256" y="40" />
-  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="38" x="320" y="67">Index</text>
-  <rect fill="rgb(153,141,195)" height="40" stroke="rgb(0,0,0)" width="128" x="448" y="40" />
-  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="76" x="512" y="67">Repository</text>
-  <path d="M 520 154 L 600 154" fill="none" stroke="rgb(0,0,0)" />
-  <path d="M 600 154 L 600 170" fill="none" stroke="rgb(0,0,0)" />
-  <path d="M 600 170 L 520 170" fill="none" stroke="rgb(0,0,0)" />
-  <polygon fill="rgb(0,0,0)" points="528,166 520,170 528,174" stroke="rgb(0,0,0)" />
-  <path d="M 328 238 L 504 238" fill="none" stroke="rgb(0,0,0)" />
-  <polygon fill="rgb(0,0,0)" points="336,234 328,238 336,242" stroke="rgb(0,0,0)" />
-  <path d="M 136 306 L 312 306" fill="none" stroke="rgb(0,0,0)" />
-  <polygon fill="rgb(0,0,0)" points="144,302 136,306 144,310" stroke="rgb(0,0,0)" />
-  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="91" x="565" y="144">reset --soft</text>
-  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="114" x="447" y="236">reset [--mixed]</text>
-  <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="14" font-style="normal" font-weight="normal" text-anchor="middle" textLength="91" x="266" y="304">reset --hard</text>
-</svg>
-
 </section>
+<section id="revisions" class="slide level1">
+<h1>Revisions</h1>
 <section>
-<p>Revisions</p>
 <p><strong>master</strong></p>
 <p class="fragment">
 <strong>v1</strong>
@@ -1104,16 +1059,162 @@ git commit -m &#39;Here goes message&#39;</code></pre>
 </p>
 </section>
 <section>
-<p>Revisions</p>
+<p>head<strong>^</strong></p>
 <p class="fragment">
-HEAD<strong>^</strong>
+head<strong>~</strong>
 </p>
 <p class="fragment">
-HEAD<strong>~</strong>
+head<strong>@{1 day ago}</strong>
+</p>
+</section>
+<section>
+<p><code>head^n</code> <strong>n-й родитель</strong></p>
+<p class="fragment">
+<code>head~n</code> <strong>n 1-x родителей</strong>
 </p>
 <p class="fragment">
-HEAD<strong>@{</strong>0<strong>}</strong>
+<code>head^1^1 == head~2</code>
 </p>
+</section>
+<section>
+<p><code>head^ == head^1</code></p>
+<p><code>head~ == head~1</code></p>
+<code>head == head^0 == head~0</code>
+</section>
+<section>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: revisions Pages: 1 -->
+<svg width="234pt" height="262pt"
+ viewBox="0.00 0.00 234.20 262.49" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 258.4902)">
+<title>revisions</title>
+<!-- G -->
+<g id="node1" class="node">
+<title>G</title>
+<ellipse fill="#a6dba0" stroke="#000000" cx="18.1984" cy="-235.6419" rx="18.399" ry="18.399"/>
+<text text-anchor="middle" x="18.1984" y="-231.9419" font-family="Times,serif" font-size="14.00" fill="#000000">G</text>
+</g>
+<!-- D -->
+<g id="node3" class="node">
+<title>D</title>
+<ellipse fill="#c2a5cf" stroke="#000000" cx="59.1984" cy="-162.5952" rx="18.399" ry="18.399"/>
+<text text-anchor="middle" x="59.1984" y="-158.8952" font-family="Times,serif" font-size="14.00" fill="#000000">D</text>
+</g>
+<!-- G&#45;&gt;D -->
+<g id="edge1" class="edge">
+<title>G&#45;&gt;D</title>
+<path fill="none" stroke="#000000" d="M27.2976,-219.4304C32.5527,-210.0679 39.2732,-198.0943 45.1895,-187.5537"/>
+<polygon fill="#000000" stroke="#000000" points="48.2821,-189.1947 50.1246,-178.7613 42.1779,-185.7685 48.2821,-189.1947"/>
+</g>
+<!-- H -->
+<g id="node2" class="node">
+<title>H</title>
+<ellipse fill="#5aae61" stroke="#000000" cx="73.1984" cy="-235.6419" rx="18.6979" ry="18.6979"/>
+<text text-anchor="middle" x="73.1984" y="-231.9419" font-family="Times,serif" font-size="14.00" fill="#000000">H</text>
+</g>
+<!-- H&#45;&gt;D -->
+<g id="edge2" class="edge">
+<title>H&#45;&gt;D</title>
+<path fill="none" stroke="#000000" d="M69.593,-216.8305C68.0557,-208.8094 66.2302,-199.2845 64.5412,-190.4721"/>
+<polygon fill="#000000" stroke="#000000" points="67.9665,-189.7496 62.6467,-180.5872 61.0917,-191.0673 67.9665,-189.7496"/>
+</g>
+<!-- B -->
+<g id="node8" class="node">
+<title>B</title>
+<ellipse fill="#762a83" stroke="#000000" cx="113.1984" cy="-90.1984" rx="18" ry="18"/>
+<text text-anchor="middle" x="113.1984" y="-86.4984" font-family="Times,serif" font-size="14.00" fill="#ffffff">B</text>
+</g>
+<!-- D&#45;&gt;B -->
+<g id="edge5" class="edge">
+<title>D&#45;&gt;B</title>
+<path fill="none" stroke="#000000" d="M70.1261,-147.9446C77.5918,-137.9354 87.6352,-124.4704 96.1458,-113.0605"/>
+<polygon fill="#000000" stroke="#000000" points="99.1135,-114.9356 102.2869,-104.8272 93.5025,-110.7503 99.1135,-114.9356"/>
+</g>
+<!-- I -->
+<g id="node4" class="node">
+<title>I</title>
+<ellipse fill="#1b7837" stroke="#000000" cx="154.1984" cy="-235.6419" rx="18" ry="18"/>
+<text text-anchor="middle" x="154.1984" y="-231.9419" font-family="Times,serif" font-size="14.00" fill="#ffffff">I</text>
+</g>
+<!-- F -->
+<g id="node6" class="node">
+<title>F</title>
+<ellipse fill="#d9f0d3" stroke="#000000" cx="167.1984" cy="-162.5952" rx="18" ry="18"/>
+<text text-anchor="middle" x="167.1984" y="-158.8952" font-family="Times,serif" font-size="14.00" fill="#000000">F</text>
+</g>
+<!-- I&#45;&gt;F -->
+<g id="edge3" class="edge">
+<title>I&#45;&gt;F</title>
+<path fill="none" stroke="#000000" d="M157.4119,-217.5854C158.8759,-209.3588 160.6419,-199.436 162.2683,-190.297"/>
+<polygon fill="#000000" stroke="#000000" points="165.7155,-190.9025 164.0219,-180.4439 158.8238,-189.676 165.7155,-190.9025"/>
+</g>
+<!-- J -->
+<g id="node5" class="node">
+<title>J</title>
+<ellipse fill="#00441b" stroke="#000000" cx="208.1984" cy="-235.6419" rx="18" ry="18"/>
+<text text-anchor="middle" x="208.1984" y="-231.9419" font-family="Times,serif" font-size="14.00" fill="#ffffff">J</text>
+</g>
+<!-- J&#45;&gt;F -->
+<g id="edge4" class="edge">
+<title>J&#45;&gt;F</title>
+<path fill="none" stroke="#000000" d="M199.302,-219.7918C193.983,-210.3154 187.11,-198.0703 181.0889,-187.3429"/>
+<polygon fill="#000000" stroke="#000000" points="184.0241,-185.4215 176.0774,-178.4143 177.9199,-188.8477 184.0241,-185.4215"/>
+</g>
+<!-- F&#45;&gt;B -->
+<g id="edge6" class="edge">
+<title>F&#45;&gt;B</title>
+<path fill="none" stroke="#000000" d="M156.2707,-147.9446C148.805,-137.9354 138.7615,-124.4704 130.251,-113.0605"/>
+<polygon fill="#000000" stroke="#000000" points="132.8943,-110.7503 124.1098,-104.8272 127.2832,-114.9356 132.8943,-110.7503"/>
+</g>
+<!-- C -->
+<g id="node9" class="node">
+<title>C</title>
+<ellipse fill="#9970ab" stroke="#000000" cx="167.1984" cy="-90.1984" rx="18.399" ry="18.399"/>
+<text text-anchor="middle" x="167.1984" y="-86.4984" font-family="Times,serif" font-size="14.00" fill="#ffffff">C</text>
+</g>
+<!-- F&#45;&gt;C -->
+<g id="edge8" class="edge">
+<title>F&#45;&gt;C</title>
+<path fill="none" stroke="#000000" d="M167.1984,-144.3264C167.1984,-136.524 167.1984,-127.2348 167.1984,-118.5731"/>
+<polygon fill="#000000" stroke="#000000" points="170.6985,-118.4613 167.1984,-108.4613 163.6985,-118.4613 170.6985,-118.4613"/>
+</g>
+<!-- E -->
+<g id="node7" class="node">
+<title>E</title>
+<ellipse fill="#e7d4e8" stroke="#000000" cx="113.1984" cy="-162.5952" rx="18" ry="18"/>
+<text text-anchor="middle" x="113.1984" y="-158.8952" font-family="Times,serif" font-size="14.00" fill="#000000">E</text>
+</g>
+<!-- E&#45;&gt;B -->
+<g id="edge7" class="edge">
+<title>E&#45;&gt;B</title>
+<path fill="none" stroke="#000000" d="M113.1984,-144.3264C113.1984,-136.4644 113.1984,-127.0928 113.1984,-118.3749"/>
+<polygon fill="#000000" stroke="#000000" points="116.6985,-118.2105 113.1984,-108.2105 109.6985,-118.2105 116.6985,-118.2105"/>
+</g>
+<!-- A -->
+<g id="node10" class="node">
+<title>A</title>
+<ellipse fill="#40004b" stroke="#000000" cx="140.1984" cy="-18" rx="18" ry="18"/>
+<text text-anchor="middle" x="140.1984" y="-14.3" font-family="Times,serif" font-size="14.00" fill="#ffffff">A</text>
+</g>
+<!-- B&#45;&gt;A -->
+<g id="edge9" class="edge">
+<title>B&#45;&gt;A</title>
+<path fill="none" stroke="#000000" d="M119.597,-73.0884C122.7914,-64.5465 126.7274,-54.0217 130.3002,-44.4679"/>
+<polygon fill="#000000" stroke="#000000" points="133.6211,-45.5797 133.8457,-34.9872 127.0646,-43.1277 133.6211,-45.5797"/>
+</g>
+<!-- C&#45;&gt;A -->
+<g id="edge10" class="edge">
+<title>C&#45;&gt;A</title>
+<path fill="none" stroke="#000000" d="M160.7998,-73.0884C157.6054,-64.5465 153.6694,-54.0217 150.0966,-44.4679"/>
+<polygon fill="#000000" stroke="#000000" points="153.3322,-43.1277 146.5511,-34.9872 146.7757,-45.5797 153.3322,-43.1277"/>
+</g>
+</g>
+</svg>
+
 </section>
 </section>
 <section id="remotes" class="slide level1">
@@ -1133,57 +1234,332 @@ cat .git/config</code></pre>
   merge = refs/heads/master</span></span></code></pre>
 </section>
 <section>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> clone project local</code></pre></div>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
 <!-- Title: %3 Pages: 1 -->
-<svg width="178pt" height="108pt"
- viewBox="0.00 0.00 178.25 107.63" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 103.6274)">
+<svg width="245pt" height="162pt"
+ viewBox="0.00 0.00 245.25 162.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 158)">
 <title>%3</title>
-<!-- A -->
+<!-- origin_master -->
 <g id="node1" class="node">
-<title>A</title>
-<ellipse fill="#e66101" stroke="#000000" cx="22.6274" cy="-22.6274" rx="22.7556" ry="22.7556"/>
-<text text-anchor="middle" x="22.6274" y="-17.6274" font-family="Times,serif" font-size="20.00" fill="#ffffff">A</text>
+<title>origin_master</title>
+<polygon fill="#0571b0" stroke="#000000" points="237.2548,-154 81.2548,-154 81.2548,-118 237.2548,-118 237.2548,-154"/>
+<text text-anchor="middle" x="159.2548" y="-131" font-family="Times,serif" font-size="20.00" fill="#ffffff">origin/master</text>
 </g>
 <!-- B -->
-<g id="node2" class="node">
+<g id="node4" class="node">
 <title>B</title>
-<ellipse fill="#e66101" stroke="#000000" cx="125.7548" cy="-22.6274" rx="22.7556" ry="22.7556"/>
-<text text-anchor="middle" x="125.7548" y="-17.6274" font-family="Times,serif" font-size="20.00" fill="#ffffff">B</text>
+<ellipse fill="#e66101" stroke="#000000" cx="159.2548" cy="-77" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="159.2548" y="-72" font-family="Times,serif" font-size="20.00" fill="#ffffff">B</text>
+</g>
+<!-- origin_master&#45;&gt;B -->
+<g id="edge2" class="edge">
+<title>origin_master&#45;&gt;B</title>
+<path fill="none" stroke="#000000" d="M159.2548,-117.7426C159.2548,-115.2541 159.2548,-112.7656 159.2548,-110.2772"/>
+<polygon fill="#000000" stroke="#000000" points="162.7549,-110.0468 159.2548,-100.0469 155.7549,-110.0469 162.7549,-110.0468"/>
+</g>
+<!-- master -->
+<g id="node2" class="node">
+<title>master</title>
+<polygon fill="#0571b0" stroke="#000000" points="203.7548,-36 114.7548,-36 114.7548,0 203.7548,0 203.7548,-36"/>
+<text text-anchor="middle" x="159.2548" y="-13" font-family="Times,serif" font-size="20.00" fill="#ffffff">master</text>
+</g>
+<!-- A -->
+<g id="node3" class="node">
+<title>A</title>
+<ellipse fill="#e66101" stroke="#000000" cx="22.6274" cy="-77" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="22.6274" y="-72" font-family="Times,serif" font-size="20.00" fill="#ffffff">A</text>
 </g>
 <!-- A&#45;&gt;B -->
 <g id="edge1" class="edge">
 <title>A&#45;&gt;B</title>
-<path fill="none" stroke="#000000" d="M45.2592,-22.6274C59.1334,-22.6274 77.1394,-22.6274 92.6026,-22.6274"/>
-<polygon fill="#000000" stroke="#000000" points="92.8195,-26.1275 102.8195,-22.6274 92.8195,-19.1275 92.8195,-26.1275"/>
+<path fill="none" stroke="#000000" d="M45.4958,-77C67.5638,-77 101.2115,-77 126.1944,-77"/>
+<polygon fill="#000000" stroke="#000000" points="126.3119,-80.5001 136.3119,-77 126.3118,-73.5001 126.3119,-80.5001"/>
 </g>
-<!-- master -->
-<g id="node3" class="node">
-<title>master</title>
-<polygon fill="#0571b0" stroke="#000000" points="170.2548,-99.6274 81.2548,-99.6274 81.2548,-63.6274 170.2548,-63.6274 170.2548,-99.6274"/>
-<text text-anchor="middle" x="125.7548" y="-76.6274" font-family="Times,serif" font-size="20.00" fill="#ffffff">master</text>
-</g>
-<!-- master&#45;&gt;B -->
-<g id="edge2" class="edge">
-<title>master&#45;&gt;B</title>
-<path fill="none" stroke="#000000" d="M125.7548,-63.37C125.7548,-60.8815 125.7548,-58.3931 125.7548,-55.9046"/>
-<polygon fill="#000000" stroke="#000000" points="129.2549,-55.6743 125.7548,-45.6743 122.2549,-55.6743 129.2549,-55.6743"/>
+<!-- B&#45;&gt;master -->
+<g id="edge3" class="edge">
+<title>B&#45;&gt;master</title>
+<path fill="none" stroke="#000000" d="M159.2548,-43.9241C159.2548,-41.4286 159.2548,-38.933 159.2548,-36.4375"/>
+<polygon fill="#000000" stroke="#000000" points="155.7549,-44.1836 159.2548,-54.1836 162.7549,-44.1836 155.7549,-44.1836"/>
 </g>
 </g>
 </svg>
 
 </section>
 <section>
-<h2 id="undoing-changes">Undoing changes</h2>
-<p><strong>Unstage changes</strong></p>
-<pre class="shell"><code>git reset --soft</code></pre>
-<p><strong>Save staged changes</strong></p>
-<pre class="shell"><code>git reset</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> project<span class="kw">;</span> <span class="fu">touch</span> D<span class="kw">;</span> <span class="fu">git</span> add .<span class="kw">;</span> <span class="fu">git</span> commit -m <span class="st">&#39;D&#39;</span></code></pre></div>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="370pt" height="162pt"
+ viewBox="0.00 0.00 370.25 162.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 158)">
+<title>%3</title>
+<!-- origin_master -->
+<g id="node1" class="node">
+<title>origin_master</title>
+<polygon fill="#0571b0" stroke="#000000" points="237.2548,-154 81.2548,-154 81.2548,-118 237.2548,-118 237.2548,-154"/>
+<text text-anchor="middle" x="159.2548" y="-131" font-family="Times,serif" font-size="20.00" fill="#ffffff">origin/master</text>
+</g>
+<!-- B -->
+<g id="node4" class="node">
+<title>B</title>
+<ellipse fill="#e66101" stroke="#000000" cx="159.2548" cy="-77" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="159.2548" y="-72" font-family="Times,serif" font-size="20.00" fill="#ffffff">B</text>
+</g>
+<!-- origin_master&#45;&gt;B -->
+<g id="edge3" class="edge">
+<title>origin_master&#45;&gt;B</title>
+<path fill="none" stroke="#000000" d="M159.2548,-117.7426C159.2548,-115.2541 159.2548,-112.7656 159.2548,-110.2772"/>
+<polygon fill="#000000" stroke="#000000" points="162.7549,-110.0468 159.2548,-100.0469 155.7549,-110.0469 162.7549,-110.0468"/>
+</g>
+<!-- master -->
+<g id="node2" class="node">
+<title>master</title>
+<polygon fill="#0571b0" stroke="#000000" points="362.2548,-36 273.2548,-36 273.2548,0 362.2548,0 362.2548,-36"/>
+<text text-anchor="middle" x="317.7548" y="-13" font-family="Times,serif" font-size="20.00" fill="#ffffff">master</text>
+</g>
+<!-- A -->
+<g id="node3" class="node">
+<title>A</title>
+<ellipse fill="#e66101" stroke="#000000" cx="22.6274" cy="-77" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="22.6274" y="-72" font-family="Times,serif" font-size="20.00" fill="#ffffff">A</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="#000000" d="M45.4958,-77C67.5638,-77 101.2115,-77 126.1944,-77"/>
+<polygon fill="#000000" stroke="#000000" points="126.3119,-80.5001 136.3119,-77 126.3118,-73.5001 126.3119,-80.5001"/>
+</g>
+<!-- D -->
+<g id="node5" class="node">
+<title>D</title>
+<ellipse fill="#e66101" stroke="#000000" cx="317.7548" cy="-77" rx="23.1702" ry="23.1702"/>
+<text text-anchor="middle" x="317.7548" y="-72" font-family="Times,serif" font-size="20.00" fill="#ffffff">D</text>
+</g>
+<!-- B&#45;&gt;D -->
+<g id="edge2" class="edge">
+<title>B&#45;&gt;D</title>
+<path fill="none" stroke="#000000" d="M181.964,-77C208.6873,-77 253.3077,-77 284.0643,-77"/>
+<polygon fill="#000000" stroke="#000000" points="284.313,-80.5001 294.313,-77 284.313,-73.5001 284.313,-80.5001"/>
+</g>
+<!-- D&#45;&gt;master -->
+<g id="edge4" class="edge">
+<title>D&#45;&gt;master</title>
+<path fill="none" stroke="#000000" d="M317.7548,-43.3894C317.7548,-41.0721 317.7548,-38.7548 317.7548,-36.4375"/>
+<polygon fill="#000000" stroke="#000000" points="314.2549,-43.5498 317.7548,-53.5498 321.2549,-43.5498 314.2549,-43.5498"/>
+</g>
+</g>
+</svg>
+
 </section>
+<section>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> fetch origin master</code></pre></div>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="327pt" height="226pt"
+ viewBox="0.00 0.00 326.51 226.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 222)">
+<title>%3</title>
+<!-- origin_master -->
+<g id="node1" class="node">
+<title>origin_master</title>
+<polygon fill="#0571b0" stroke="#000000" points="318.5097,-218 162.5097,-218 162.5097,-182 318.5097,-182 318.5097,-218"/>
+<text text-anchor="middle" x="240.5097" y="-195" font-family="Times,serif" font-size="20.00" fill="#ffffff">origin/master</text>
+</g>
+<!-- C -->
+<g id="node5" class="node">
+<title>C</title>
+<ellipse fill="#e66101" stroke="#000000" cx="240.5097" cy="-141" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="240.5097" y="-136" font-family="Times,serif" font-size="20.00" fill="#ffffff">C</text>
+</g>
+<!-- origin_master&#45;&gt;C -->
+<g id="edge4" class="edge">
+<title>origin_master&#45;&gt;C</title>
+<path fill="none" stroke="#000000" d="M240.5097,-181.7426C240.5097,-179.2541 240.5097,-176.7656 240.5097,-174.2772"/>
+<polygon fill="#000000" stroke="#000000" points="244.0098,-174.0468 240.5097,-164.0469 237.0098,-174.0469 244.0098,-174.0468"/>
+</g>
+<!-- master -->
+<g id="node2" class="node">
+<title>master</title>
+<polygon fill="#0571b0" stroke="#000000" points="285.0097,-36 196.0097,-36 196.0097,0 285.0097,0 285.0097,-36"/>
+<text text-anchor="middle" x="240.5097" y="-13" font-family="Times,serif" font-size="20.00" fill="#ffffff">master</text>
+</g>
+<!-- A -->
+<g id="node3" class="node">
+<title>A</title>
+<ellipse fill="#e66101" stroke="#000000" cx="22.6274" cy="-109" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="22.6274" y="-104" font-family="Times,serif" font-size="20.00" fill="#ffffff">A</text>
+</g>
+<!-- B -->
+<g id="node4" class="node">
+<title>B</title>
+<ellipse fill="#e66101" stroke="#000000" cx="103.8823" cy="-109" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="103.8823" y="-104" font-family="Times,serif" font-size="20.00" fill="#ffffff">B</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="#000000" d="M45.2614,-109C53.2069,-109 62.303,-109 70.9215,-109"/>
+<polygon fill="#000000" stroke="#000000" points="71.0879,-112.5001 81.0878,-109 71.0878,-105.5001 71.0879,-112.5001"/>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="edge2" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="#000000" d="M126.1379,-114.2126C148.468,-119.4426 183.0878,-127.551 208.3917,-133.4775"/>
+<polygon fill="#000000" stroke="#000000" points="207.7289,-136.9169 218.2636,-135.7897 209.3252,-130.1014 207.7289,-136.9169"/>
+</g>
+<!-- D -->
+<g id="node6" class="node">
+<title>D</title>
+<ellipse fill="#e66101" stroke="#000000" cx="240.5097" cy="-77" rx="23.1702" ry="23.1702"/>
+<text text-anchor="middle" x="240.5097" y="-72" font-family="Times,serif" font-size="20.00" fill="#ffffff">D</text>
+</g>
+<!-- B&#45;&gt;D -->
+<g id="edge3" class="edge">
+<title>B&#45;&gt;D</title>
+<path fill="none" stroke="#000000" d="M126.1379,-103.7874C148.2022,-98.6197 182.2653,-90.6416 207.484,-84.7351"/>
+<polygon fill="#000000" stroke="#000000" points="208.4113,-88.1127 217.3496,-82.4244 206.8149,-81.2971 208.4113,-88.1127"/>
+</g>
+<!-- D&#45;&gt;master -->
+<g id="edge5" class="edge">
+<title>D&#45;&gt;master</title>
+<path fill="none" stroke="#000000" d="M240.5097,-43.3894C240.5097,-41.0721 240.5097,-38.7548 240.5097,-36.4375"/>
+<polygon fill="#000000" stroke="#000000" points="237.0098,-43.5498 240.5097,-53.5498 244.0098,-43.5498 237.0098,-43.5498"/>
+</g>
+</g>
+</svg>
+
+</section>
+<section>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> fetch <span class="kw">&amp;&amp;</span> <span class="fu">git</span> merge origin/master
+<span class="fu">git</span> pull origin master
+<span class="fu">git</span> pull --rebase</code></pre></div>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="452pt" height="194pt"
+ viewBox="0.00 0.00 451.51 194.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 190)">
+<title>%3</title>
+<!-- origin_master -->
+<g id="node1" class="node">
+<title>origin_master</title>
+<polygon fill="#0571b0" stroke="#000000" points="318.5097,-186 162.5097,-186 162.5097,-150 318.5097,-150 318.5097,-186"/>
+<text text-anchor="middle" x="240.5097" y="-163" font-family="Times,serif" font-size="20.00" fill="#ffffff">origin/master</text>
+</g>
+<!-- C -->
+<g id="node5" class="node">
+<title>C</title>
+<ellipse fill="#e66101" stroke="#000000" cx="240.5097" cy="-109" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="240.5097" y="-104" font-family="Times,serif" font-size="20.00" fill="#ffffff">C</text>
+</g>
+<!-- origin_master&#45;&gt;C -->
+<g id="edge6" class="edge">
+<title>origin_master&#45;&gt;C</title>
+<path fill="none" stroke="#000000" d="M240.5097,-149.7426C240.5097,-147.2541 240.5097,-144.7656 240.5097,-142.2772"/>
+<polygon fill="#000000" stroke="#000000" points="244.0098,-142.0468 240.5097,-132.0469 237.0098,-142.0469 244.0098,-142.0468"/>
+</g>
+<!-- master -->
+<g id="node2" class="node">
+<title>master</title>
+<polygon fill="#0571b0" stroke="#000000" points="443.5097,-36 354.5097,-36 354.5097,0 443.5097,0 443.5097,-36"/>
+<text text-anchor="middle" x="399.0097" y="-13" font-family="Times,serif" font-size="20.00" fill="#ffffff">master</text>
+</g>
+<!-- A -->
+<g id="node3" class="node">
+<title>A</title>
+<ellipse fill="#e66101" stroke="#000000" cx="22.6274" cy="-77" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="22.6274" y="-72" font-family="Times,serif" font-size="20.00" fill="#ffffff">A</text>
+</g>
+<!-- B -->
+<g id="node4" class="node">
+<title>B</title>
+<ellipse fill="#e66101" stroke="#000000" cx="103.8823" cy="-77" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="103.8823" y="-72" font-family="Times,serif" font-size="20.00" fill="#ffffff">B</text>
+</g>
+<!-- A&#45;&gt;B -->
+<g id="edge1" class="edge">
+<title>A&#45;&gt;B</title>
+<path fill="none" stroke="#000000" d="M45.2614,-77C53.2069,-77 62.303,-77 70.9215,-77"/>
+<polygon fill="#000000" stroke="#000000" points="71.0879,-80.5001 81.0878,-77 71.0878,-73.5001 71.0879,-80.5001"/>
+</g>
+<!-- B&#45;&gt;C -->
+<g id="edge2" class="edge">
+<title>B&#45;&gt;C</title>
+<path fill="none" stroke="#000000" d="M126.1379,-82.2126C148.468,-87.4426 183.0878,-95.551 208.3917,-101.4775"/>
+<polygon fill="#000000" stroke="#000000" points="207.7289,-104.9169 218.2636,-103.7897 209.3252,-98.1014 207.7289,-104.9169"/>
+</g>
+<!-- D -->
+<g id="node6" class="node">
+<title>D</title>
+<ellipse fill="#e66101" stroke="#000000" cx="240.5097" cy="-45" rx="23.1702" ry="23.1702"/>
+<text text-anchor="middle" x="240.5097" y="-40" font-family="Times,serif" font-size="20.00" fill="#ffffff">D</text>
+</g>
+<!-- B&#45;&gt;D -->
+<g id="edge3" class="edge">
+<title>B&#45;&gt;D</title>
+<path fill="none" stroke="#000000" d="M126.1379,-71.7874C148.2022,-66.6197 182.2653,-58.6416 207.484,-52.7351"/>
+<polygon fill="#000000" stroke="#000000" points="208.4113,-56.1127 217.3496,-50.4244 206.8149,-49.2971 208.4113,-56.1127"/>
+</g>
+<!-- E -->
+<g id="node7" class="node">
+<title>E</title>
+<ellipse fill="#e66101" stroke="#000000" cx="399.0097" cy="-77" rx="22.7556" ry="22.7556"/>
+<text text-anchor="middle" x="399.0097" y="-72" font-family="Times,serif" font-size="20.00" fill="#ffffff">E</text>
+</g>
+<!-- C&#45;&gt;E -->
+<g id="edge4" class="edge">
+<title>C&#45;&gt;E</title>
+<path fill="none" stroke="#000000" d="M262.8827,-104.4831C290.0227,-99.0037 335.9722,-89.7268 366.8903,-83.4847"/>
+<polygon fill="#000000" stroke="#000000" points="367.6409,-86.9038 376.7505,-81.494 366.2556,-80.0423 367.6409,-86.9038"/>
+</g>
+<!-- D&#45;&gt;E -->
+<g id="edge5" class="edge">
+<title>D&#45;&gt;E</title>
+<path fill="none" stroke="#000000" d="M263.5569,-49.6531C290.6685,-55.1267 335.8601,-64.2506 366.5182,-70.4402"/>
+<polygon fill="#000000" stroke="#000000" points="366.2078,-73.9481 376.7027,-72.4964 367.5932,-67.0865 366.2078,-73.9481"/>
+</g>
+<!-- E&#45;&gt;master -->
+<g id="edge7" class="edge">
+<title>E&#45;&gt;master</title>
+<path fill="none" stroke="#000000" d="M399.0097,-43.9241C399.0097,-41.4286 399.0097,-38.933 399.0097,-36.4375"/>
+<polygon fill="#000000" stroke="#000000" points="395.5098,-44.1836 399.0097,-54.1836 402.5098,-44.1836 395.5098,-44.1836"/>
+</g>
+</g>
+</svg>
+
+</section>
+<section>
+<p><strong>Notation</strong></p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="dt">local-branch:remote-branch</span></code></pre></div>
+<p><strong>Uptrack</strong></p>
+<pre class="shell"><code>git push -u origin feature</code></pre>
+<p><strong>Delete</strong></p>
+<pre class="shell"><code>git push origin :feature
+git push origin --delete feature</code></pre>
+</section>
+</section>
+<section id="the-end" class="slide level1">
+<h1>The End</h1>
+<p><strong>Прочитать</strong></p>
+<p>https://git-scm.com/book/en/v2</p>
+<p>https://git-scm.com/book/ru/v1</p>
 </section>
     </div>
   </div>
