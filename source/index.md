@@ -525,6 +525,83 @@ seqdiag {
 </section>
 
 <section>
+Revisions
+
+**master**
+
+<p class="fragment">
+**v1**
+</p>
+
+<p class="fragment">
+**b1713c7**
+</p>
+
+</section>
+
+<section>
+Revisions
+
+<p class="fragment">
+HEAD**^**
+</p>
+
+<p class="fragment">
+HEAD**~**
+</p>
+
+<p class="fragment">
+HEAD**@{**0**}**
+</p>
+</section>
+
+# Remotes
+
+<section>
+
+```
+git init project && cd ..
+```
+
+<pre><code class="hljs nohighlight">git clone project<span class="fragment fade-up" data-fragment-index="0" style="color: #4dac26;"> -o source</span> local
+cd local<span class="fragment fade-up" data-fragment-index="1" style="color: #5e3c99"> && git branch -m main</span>
+<span class="fragment fade-out" data-fragment-index="3"><span class="fragment fade-up" data-fragment-index="2" style="color: #e66101">git branch --unset-upstream</span></span><span class="fragment fade-up" data-fragment-index="3" style="color: #0571b0">git branch --set-upstream-to=source/master</span>
+cat .git/config</code></pre>
+
+<pre><code class="hljs nohighlight">[remote "<span class="fragment fade-out" data-fragment-index="0">origin</span><span class="fragment fade-up" data-fragment-index="0" style="color: #4dac26;">source</span>"]
+  url = /tmp/project
+  fetch = +refs/heads/*:refs/remotes/<span class="fragment fade-out" data-fragment-index="0">origin</span><span class="fragment fade-up" data-fragment-index="0" style="color: #4dac26;">source</span>/*
+[branch "<span class="fragment fade-out" data-fragment-index="1">master</span><span class="fragment fade-up" data-fragment-index="1" style="color: #5e3c99">main</span>"]
+  <span class="fragment fade-out" data-fragment-index="2">remote = <span class="fragment fade-out" data-fragment-index="0">origin</span><span class="fragment fade-up" data-fragment-index="0" style="color: #4dac26;">source</span>
+  merge = refs/heads/master</span><span class="fragment fade-up" data-fragment-index="3" style="color: #0571b0">remote = source
+  merge = refs/heads/master</span></span></code></pre>
+
+</section>
+
+
+<section>
+```dot
+digraph {
+  graph[bgcolor="transparent" rankdir=LR]
+  node [style="filled" fontcolor="white" fontsize=20]
+
+  {
+    node[shape="circle" fillcolor="#e66101"]
+    A -> B
+  }
+
+  {
+    node[shape="rect" fillcolor="#0571b0"]
+    rank="same"
+    master -> B
+  }
+}
+```
+</section>
+
+
+<section>
+
 
 ## Undoing changes
 
@@ -537,8 +614,5 @@ git reset --soft
 ```shell
 git reset
 ```
+
 </section>
-
-
-
-<script src="highlight.min.js"></script>
