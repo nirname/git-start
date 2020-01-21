@@ -90,7 +90,7 @@ seqdiag {
 </section>
 
 <section>
-## Doing chagnes
+Внесение изменений
 
 ```shell
 git add .
@@ -289,7 +289,7 @@ git checkout master
 git merge --no-ff feature
 ```
 
-```graphviz
+```dot
 digraph {
   graph[ splines=false fontname="Arial" bgcolor="transparent" rankdir=LR]
   node [style="filled" fontcolor="white" fontsize=20]
@@ -336,7 +336,177 @@ digraph {
 ```
 </section>
 
----
+<section>
+Слияние при наличии других коммитов
+
+```dot
+digraph {
+  graph[ splines=false fontname="Arial" bgcolor="transparent" rankdir=LR]
+  node [style="filled" fontcolor="white" fontsize=20]
+
+  subgraph nodes {
+    node [shape="circle"]
+    {
+      node [color="#e66101" fillcolor="#e66101"]
+      A B C
+    }
+    {
+      node [color="#5e3c99" fillcolor="#5e3c99"]
+      D E
+    }
+    {
+      node [color="#018571" fillcolor="#018571"]
+      G
+    }
+    {
+      node [color="#e66101" fillcolor="#e66101"]
+      F
+    }
+  }
+
+  { A -> B -> C -> G -> F }
+  { C -> D -> E -> F }
+
+  {
+    node [shape="rect" color="#4dac26" fillcolor="#4dac26"]
+    HEAD
+  }
+
+  {
+    node [shape="rect" color="#0571b0" fillcolor="#0571b0"]
+    master feature
+  }
+
+  {
+    rank = same
+    G D
+  }
+
+  {
+    rank = same
+    F -> master -> HEAD [dir="back"]
+  }
+
+  {
+    rank = same
+    feature -> E
+  }
+}
+```
+</section>
+
+# Discarding
+
+<section>
+Целый commit
+
+
+```bash
+git revert head~1
+git revert b
+```
+
+```dot
+digraph {
+  graph[splines=false fontname="Arial" bgcolor="transparent" rankdir=LR]
+  node [style="filled" fontcolor="white" fontsize=20]
+
+  subgraph nodes {
+    node [shape="circle"]
+    {
+      node [color="#e66101" fillcolor="#e66101"]
+      A C
+    }
+    {
+      node [color="#5e3c99" fillcolor="#5e3c99"]
+      B
+    }
+    {
+      node [color="#5e3c99" penwidth=2 fontcolor="#5e3c99" fillcolor="#5e3c99" style=dashed]
+      "-B"
+    }
+  }
+
+  subgraph labels {
+    node [shape="rect"]
+    {
+      node[color="#4dac26" fillcolor="#4dac26"]
+      head
+    }
+    {
+      node[color="#4dac26" fillcolor="#4dac26" fontcolor="#4dac26" fillcolor="#4dac26" style=dashed penwidth=2]
+      "head'"
+    }
+    {
+      node[color="#0571b0" fillcolor="#0571b0"]
+      feature
+    }
+    {
+      node[color="#0571b0" fillcolor="#0571b0" fontcolor="#0571b0" fillcolor="#0571b0" style=dashed penwidth=2]
+      "feature'"
+    }
+  }
+
+  A -> B -> C -> "-B"
+  // B:ne -> "-B":nw [style="dashed"]
+
+  {
+    rank = same
+    C -> feature -> head [dir=back]
+  }
+
+  {
+    rank = same
+    "-B" -> "feature'" -> "head'" [dir=back]
+  }
+
+}
+```
+</section>
+
+<section>
+1 файл
+
+```bash
+git reset b -- main.cpp;            git ci -m 'main.cpp - b'
+git co    b -- main.cpp; git add .; git ci -m 'main.cpp - b'
+```
+
+```dot
+digraph {
+  graph[splines=true fontname="Arial" bgcolor="transparent" rankdir=LR]
+  node [shape="rect" style="filled" fontcolor="white" fontsize=20]
+  subgraph cluster_a {
+    node [fillcolor="#db2b39" color="#db2b39"]
+    label="A"
+    a_main_cpp [label="main.cpp"]
+    a_main_h [label="main.h"]
+  }
+  subgraph cluster_b {
+    node [fillcolor="#29335c" color="#29335c" fontcolor="white"]
+    label="B"
+    b_main_cpp [label="main.cpp"]
+    b_main_h [label="main.h"]
+  }
+  subgraph cluster_c {
+    node [fillcolor="#f4a711" color="#f4a711"]
+    label="C"
+    c_main_cpp [label="main.cpp"]
+    c_main_h [label="main.h"]
+  }
+  subgraph cluster_d {
+    label="D"
+    d_main_cpp [label="main.cpp" fillcolor="#29335c" color="#29335c" fontcolor="white"]
+    d_main_h [label="main.h" fillcolor="#f4a711" color="#f4a711"]
+  }
+
+  a_main_cpp -> b_main_cpp -> c_main_cpp
+  b_main_cpp -> d_main_cpp [style="dashed"]
+  a_main_h -> b_main_h -> c_main_h -> d_main_h
+
+}
+```
+</section>
 
 
 <section>
@@ -355,6 +525,7 @@ seqdiag {
 </section>
 
 <section>
+
 ## Undoing changes
 
 **Unstage changes**
