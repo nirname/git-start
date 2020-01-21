@@ -102,27 +102,7 @@ git commit -m 'Here goes message'
 # Branches
 
 <section>
-Создание ветки
-
-```shell
-git branch feature
-```
-
-Переключение
-
-```shell
-git checkout feature
-```
-
-Сокращённо
-
-```bash
-git checkout -b feature
-```
-</section>
-
-<section>
-  Список веток
+Список веток
 
 ```bash
 $ git branch --all
@@ -160,6 +140,201 @@ digraph {
 </section>
 
 <section>
+Новая ветка
+```bash
+git branch feature
+git checkout feature
+git checkout -b feature # сокращённо
+```
+
+
+```dot
+digraph {
+  graph[ splines=false fontname="Arial" bgcolor="transparent" rankdir=LR]
+  node [style="filled" fontcolor="white" fontsize=20]
+
+  subgraph nodes {
+    node [shape="circle" color="#e66101" fillcolor="#e66101"]
+    A B C
+  }
+
+  { A -> B -> C }
+
+  {
+    node [shape="rect" color="#4dac26" fillcolor="#4dac26"]
+    head
+  }
+
+  {
+    node [shape="rect" color="#0571b0" fillcolor="#0571b0"]
+    master feature
+  }
+
+ {
+    rank = same
+    C -> master [dir="back"]
+  }
+
+  {
+    rank = same
+    head -> feature -> C
+  }
+
+}
+```
+</section>
+
+<section>
+Разработка
+
+```bash
+touch D; git add .; git commit -m 'D'
+touch F; git add .; git commit -m 'F'
+```
+
+```dot
+digraph {
+  graph[ splines=false fontname="Arial" bgcolor="transparent" rankdir=LR]
+  node [style="filled" fontcolor="white" fontsize=20]
+
+  subgraph nodes {
+    node [shape="circle"]
+    {
+      node [color="#e66101" fillcolor="#e66101"]
+      A B C
+    }
+    {
+      node [color="#5e3c99" fillcolor="#5e3c99"]
+      D E
+    }
+  }
+
+  { A -> B -> C -> D -> E }
+
+  {
+    node [shape="rect" color="#4dac26" fillcolor="#4dac26"]
+    head
+  }
+
+  {
+    node [shape="rect" color="#0571b0" fillcolor="#0571b0"]
+    master feature
+  }
+
+ {
+    rank = same
+    C -> master [dir="back"]
+  }
+
+  {
+    rank = same
+    head -> feature -> E
+  }
+}
+```
+</section>
+
+<section>
+Слияние **fast-forward, "Перемотка"**
+
+```bash
+git checkout master
+git merge feature
+```
+
+```dot
+digraph {
+  graph[ splines=false fontname="Arial" bgcolor="transparent" rankdir=LR]
+  node [style="filled" fontcolor="white" fontsize=20]
+
+  subgraph nodes {
+    node [shape="circle" color="#e66101" fillcolor="#e66101"]
+    {
+      node [color="#e66101" fillcolor="#e66101"]
+      A B C
+    }
+    {
+      node [color="#5e3c99" fillcolor="#5e3c99"]
+      D E
+    }
+  }
+
+  { A -> B -> C }
+  { C -> D -> E }
+
+  {
+    node [shape="rect" color="#4dac26" fillcolor="#4dac26"]
+    head
+  }
+
+  {
+    node [shape="rect" color="#0571b0" fillcolor="#0571b0"]
+    master feature
+  }
+
+  {
+    rank = same
+    feature -> E
+    E -> master -> head [dir = "back"]
+  }
+}
+```
+</section>
+
+<section>
+Слияние **--no-ff**
+
+```bash
+git checkout master
+git merge --no-ff feature
+```
+
+```graphviz
+digraph {
+  graph[ splines=false fontname="Arial" bgcolor="transparent" rankdir=LR]
+  node [style="filled" fontcolor="white" fontsize=20]
+
+  subgraph nodes {
+    node [shape="circle"]
+    {
+      node [color="#e66101" fillcolor="#e66101"]
+      A B C
+    }
+    {
+      node [color="#5e3c99" fillcolor="#5e3c99"]
+      D E
+    }
+    {
+      node [color="#e66101" fillcolor="#e66101"]
+      F
+    }
+  }
+
+  { A -> B -> C -> F }
+  { C -> D -> E -> F }
+
+  {
+    node [shape="rect" color="#4dac26" fillcolor="#4dac26"]
+    head
+  }
+
+  {
+    node [shape="rect" color="#0571b0" fillcolor="#0571b0"]
+    master feature
+  }
+
+  {
+    rank = same
+    F -> master -> head [dir="back"]
+  }
+
+  {
+    rank = same
+    feature -> E
+  }
+}
+```
+</section>
 
 ---
 
